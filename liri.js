@@ -83,10 +83,7 @@ function movieThis() {
 function concertThis() {
   axios.get('https://rest.bandsintown.com/artists/' + value + '/events?app_id=' + keys.bandsintown.id)
     .then(function (response) {
-      console.log(value);
-      console.log(request);
-      console.log(response.data);
-      console.log(response.data[0].lineup = " will be playing at " +
+      console.log(response.data[0].lineup[0] + " will be performing at " +
         response.data[0].venue.name + " in " +
         response.data[0].venue.city + ", " +
         response.data[0].venue.region + " on " +
