@@ -60,6 +60,9 @@ function spotifyThisSong() {
     console.log('Song Title: ' + data.tracks.items[0].name);
     console.log('Preview: ' + data.tracks.items[0].preview_url);
     console.log('Album: ' + data.tracks.items[0].album.name);
+    fs.appendFile('log.txt', '\n\n\nSpotify Song: \n\nArtist: ' + data.tracks.items[0].album.artists[0].name + '\nSong Title: ' + data.tracks.items[0].name + '\nPreview: ' + data.tracks.items[0].preview_url + '\nAlbum: ' + data.tracks.items[0].album.name, function (err) {
+      if (err) throw err;
+    });
   });
 }
 
@@ -74,6 +77,9 @@ function movieThis() {
       console.log('Language: ' + response.data.Language);
       console.log('Plot: ' + response.data.Plot);
       console.log('Cast: ' + response.data.Actors);
+      fs.appendFile('log.txt', '\n\n\nMovie: \n\nTitle: ' + response.data.Title + '\nYear: ' + response.data.Year + '\nIMDB Rating: ' + response.data.Ratings[0].Value + '\nRotton Tomatoes Rating: ' + response.data.Ratings[1].Value + '\nCountry: ' + response.data.Country + '\nLanguage: ' + response.data.Language + '\nPlot: ' + response.data.Plot + '\nCast: ' + response.data.Actors, function (err) {
+        if (err) throw err;
+      });
     })
     .catch(function (error) {
       console.log(error);
@@ -88,6 +94,9 @@ function concertThis() {
         response.data[0].venue.city + ", " +
         response.data[0].venue.region + " on " +
         moment(response.data[0].datetime).format('MMMM Do YYYY, h:mm:ss a'));
+      fs.appendFile('log.txt', '\n\n\nConcert: \n\nArtist: ' + response.data[0].lineup[0] + '\nVelue: ' + response.data[0].venue.name + '\nCity: ' + response.data[0].venue.city + '\nState: ' + response.data[0].venue.region + '\nTime: ' + moment(response.data[0].datetime).format('MMMM Do YYYY, h:mm:ss a'), function (err) {
+        if (err) throw err;
+      });
     })
     .catch(function (error) {
       console.log(error);
